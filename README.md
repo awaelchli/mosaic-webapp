@@ -4,5 +4,30 @@ This is the basecode for the study week *Schweizer Jugend Forscht*.
 
 ## Installation
 
-TODO
+You require Python version 3.6 or higher.
+Create a virtual environment (e.g. in your home folder) and activate it:
+```
+virtualenv ~/venvs/mosaic
+source ~/venvs/mosaic/bin/activate
+```
+Install PyTorch for your platform by following the instructions [here](https://pytorch.org/).
+Choose the CUDA installation if you have a GPU that supports it. 
+Install the rest of packages with pip:
+```
+pip install -r requirements.txt
+```
 
+## Jupyter Notebook
+
+Remember to always activate your environment before working on the project. 
+To view and edit the notebooks, run the Jupyter server:
+```
+source ~/venvs/mosaic/bin/activate
+jupyter notebook
+```
+This should open a new tab in your default browser. 
+If not, copy the url that is displayed in the terminal and paste it manually into the browser.
+
+## Assignments
+
+TODO
