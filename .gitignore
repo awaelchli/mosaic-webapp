@@ -58,37 +58,21 @@ docs/_build/
 target/
 
 
-data/cifar10
-data/cifar100
-data/tiny-imagenet-200
+# Project files
+src/samples/
+src/output/
+src/data/cifar10
+src/data/cifar100
+src/data/svhn
+src/data/tiny-imagenet-200
+src/data/*.pkl
 
-samples/
+src/features/
+src/model/
+src/models/
 
-output/
-
-data\.pkl
-
-features\.pt
-
-model\.pkl
-
-autoencoder_fc\.pt
-
-autoencoder\.pt
-
-model-k1000-feat\.pkl
-
-autoencoder_conv\.pt
-
-\.idea/
-
+.ipynb_checkpoints
+.idea/
 *.pt
 
-models/
 
-features/cifar10/
-
-data/svhn/
-
-features/svhn/
-.ipynb_checkpoints
