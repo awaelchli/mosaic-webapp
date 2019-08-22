@@ -76,3 +76,9 @@ src/models/
 *.pt
 
 
+# LaTeX
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
