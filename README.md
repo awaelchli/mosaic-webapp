@@ -25,9 +25,9 @@ To view and edit the notebooks, run the Jupyter server:
 source ~/venvs/mosaic/bin/activate
 jupyter notebook
 ```
-This should open a new tab in your default browser. 
-If not, copy the url that is displayed in the terminal and paste it manually into the browser.
+This should open a new tab in your default internet browser. 
+If not, copy the url displayed in the terminal and paste it manually into the browser.
 
 ## Assignments
 
-TODO
+You can find a detailed description of the assignments in the project folder.
