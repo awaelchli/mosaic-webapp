@@ -82,3 +82,4 @@ src/models/
 *.out
 *.synctex.gz
 *.toc
+src/video_frames
