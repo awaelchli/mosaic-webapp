@@ -7,4 +7,67 @@
         Here goes the main content of the page. See file main.html.
     </p>
 
+
+    <!-- This is the upload form (file selection and upload button) -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input type="file" accept="image/*" id="real-file" name="upload_image" hidden="hidden" onchange="unlock();"/>
+            <button class="btn btn-primary" type="button" id="custom-button" >
+                Choose a file
+            </button>
+            <span class="text-muted" id="custom-text">
+                No file selected.
+            </span>
+        </div>
+
+        <!-- This is the upload button -->
+        <button class="btn btn-primary" type="submit" id="upload-button" disabled>
+            Upload
+        </button>
+    </form>
+
+    <p>You can choose to have a button for the final result ... </p>
+    <div>
+        <a class="btn btn-primary {% if not success %} disabled {% endif %}" href="{{ output_file_url }}" target="_blank">
+            Mosaic
+        </a>
+    </div>
+
+    <p>... or directly show the mosaic once it is ready. </p>
+    <img src="{{ output_file_url }}" class="img-fluid" alt="Mosaic image" {% if not success %} hidden {% endif %}>
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+    <script>
+
+        const realFileBtn = document.getElementById('real-file');
+        const customBtn = document.getElementById('custom-button');
+        const customTxt = document.getElementById('custom-text');
+
+        customBtn.addEventListener("click", function(){
+            realFileBtn.click()
+        });
+
+        realFileBtn.addEventListener("change", function () {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+            } else {
+                customTxt.innerHTML = 'No file chosen.'
+            }
+        });
+
+    </script>
+
+    <script>
+        function unlock(){
+            document.getElementById('upload-button').removeAttribute("disabled");
+        }
+    </script>
 {% endblock %}

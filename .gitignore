@@ -85,5 +85,6 @@ src/models/
 src/video_frames
 
 # Django
+media
 staticfiles
 webapp/db.sqlite3
