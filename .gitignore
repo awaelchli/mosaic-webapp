@@ -83,3 +83,7 @@ src/models/
 *.synctex.gz
 *.toc
 src/video_frames
+
+# Django
+staticfiles
+webapp/db.sqlite3
