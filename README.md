@@ -1,6 +1,6 @@
 # Image Mosaic - Schweizer Jugend Forscht
 
-This is the basecode for the study week [*Schweizer Jugend Forscht*](https://sjf.ch/) at University of Bern.
+This is the a Mosaicking WebApp created during the study week [*Fascinating Informatics*](https://sjf.ch/) at University of Bern.
 
 ## Installation
 
@@ -9,25 +9,32 @@ Create a virtual environment (e.g. in your home folder) and activate it:
 ```
 virtualenv ~/venvs/mosaic
 source ~/venvs/mosaic/bin/activate
-```
-Install PyTorch for your platform by following the instructions [here](https://pytorch.org/).
-Choose the CUDA installation if you have a GPU that supports it. 
-Install the rest of packages with pip:
-```
 pip install -r requirements.txt
 ```
 
-## Jupyter Notebook
+## Running The Django WebApp
 
-Remember to always activate your environment before working on the project. 
-To view and edit the notebooks, run the Jupyter server:
+### Initial setup
 ```
 source ~/venvs/mosaic/bin/activate
-jupyter notebook
+python manage.py migrate
 ```
-This should open a new tab in your default internet browser. 
-If not, copy the url displayed in the terminal and paste it manually into the browser.
 
-## Assignments
+### Running the server
+```
+source ~/venvs/mosaic/bin/activate
+python manage.py runserver
+```
 
-You can find a detailed description of the assignments in the project folder.
+## Acknowledgements
+This WebApp is the result of the study week "Fascinating Informatics", organized by the Swiss Youth in Science foundation. 
+Students who participated in this project:
+- Elina Teplygina
+- Marlon Anderes
+- Simon Schedes
+
+Coordinator: Prof. Dr. Paolo Favaro
+
+Tutor: Adrian Wälchli
+
+Funded by the Hasler Stiftung
