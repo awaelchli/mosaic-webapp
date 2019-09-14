@@ -1,0 +1,10 @@
+.box1 {
+    padding: 10px;
+    border: 10px solid black;
+    border-radius: 10px;
+}
+
+hr {
+    height: 2px;
+    background-color: black;
+}

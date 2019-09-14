@@ -74,6 +74,7 @@ src/models/
 .ipynb_checkpoints
 .idea/
 *.pt
+*.pkl
 
 
 # LaTeX

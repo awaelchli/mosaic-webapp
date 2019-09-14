@@ -1,42 +1,101 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
 
 {% block body %}
 
-    <h1 class="mt-5">This is a section title</h1>
-    <p class="lead">
-        Here goes the main content of the page. See file main.html.
-    </p>
 
 
     <!-- This is the upload form (file selection and upload button) -->
+    <h1>Make your image unique!</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
+
         <div class="form-group">
+
             <input type="file" accept="image/*" id="real-file" name="upload_image" hidden="hidden" onchange="unlock();"/>
-            <button class="btn btn-primary" type="button" id="custom-button" >
-                Choose a file
-            </button>
-            <span class="text-muted" id="custom-text">
-                No file selected.
-            </span>
-        </div>
+            <div class="box1">
+
+                <!--&lt;!&ndash; Small &ndash;&gt;-->
+                <!--<div class="custom-control custom-radio">-->
+                  <!--<input type="radio" class="custom-control-input" id="Small" name="small" value={{request.form.small}}>-->
+                  <!--<label class="custom-control-label" for="Small">Small   (~2 minutes)</label>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash; Medium &ndash;&gt;-->
+                <!--<div class="custom-control custom-radio">-->
+                  <!--<input type="radio" class="custom-control-input" id="Medium" name="medium" value={{request.form.medium}}>-->
+                  <!--<label class="custom-control-label" for="Medium">Medium   (~5 minutes)</label>-->
+                <!--</div>-->
+
+                 <!--&lt;!&ndash; Large &ndash;&gt;-->
+                <!--<div class="custom-control custom-radio">-->
+                 <!--<input type="radio" class="custom-control-input" id="Large" name="big" value={{request.form.big}}>-->
+                     <!--<label class="custom-control-label" for="Large">Large   (~10 minutes)</label>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash; Original size&ndash;&gt;-->
+                <!--<div class="custom-control custom-radio">-->
+                    <!--<input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios">-->
+                        <!--<label class="custom-control-label" for="defaultChecked">Original size</label>-->
+                   <!--</div>-->
+
+                <!-- Small -->
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
+                  <label class="custom-control-label" for="defaultGroupExample1">Small (~2 minutes)</label>
+                </div>
+
+                <!-- Medium -->
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" checked>
+                  <label class="custom-control-label" for="defaultGroupExample2">Medium   (~5 minutes)</label>
+                </div>
+
+                <!-- Large -->
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfDefaultRadios">
+                  <label class="custom-control-label" for="defaultGroupExample3">Large   (~10 minutes)</label>
+                </div>
+
+                <!-- Original size -->
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" id="defaultGroupExample4" name="groupOfDefaultRadios">
+                  <label class="custom-control-label" for="defaultGroupExample4">Original size</label>
+                </div>
+            </div>
+
+                <button class="btn btn-primary" type="button" id="custom-button" >
+                    Upload
+                </button>
+                <span class="text-muted" id="custom-text">
+                    No file selected.
+                </span>
 
         <!-- This is the upload button -->
-        <button class="btn btn-primary" type="submit" id="upload-button" disabled>
-            Upload
-        </button>
+          <button class="btn btn-primary" type="submit" id="upload-button" onclick="wait();" disabled>
+              Convert
+          </button>
+
+            </div>
+         <span class="text-muted" id="waiting" hidden>
+             Please wait...
+         </span>
+
+        <a class="btn btn-primary {% if not success %} disabled {% endif %}" href="{{ output_file_url }}" target="_blank">
+            Download
+        </a>
     </form>
 
-    <p>You can choose to have a button for the final result ... </p>
-    <div>
-        <a class="btn btn-primary {% if not success %} disabled {% endif %}" href="{{ output_file_url }}" target="_blank">
-            Mosaic
-        </a>
-    </div>
-
-    <p>... or directly show the mosaic once it is ready. </p>
-    <img src="{{ output_file_url }}" class="img-fluid" alt="Mosaic image" {% if not success %} hidden {% endif %}>
+    <hr/>
+<h4>Your mosaic:</h4>
+    <img src="{{ output_file_url }}" class="img-fluid mt-4" alt="Mosaic image" {% if not success %} hidden {% endif %} style="width: 100%;">
 
 
 
@@ -69,5 +128,11 @@
         function unlock(){
             document.getElementById('upload-button').removeAttribute("disabled");
         }
+
+        function wait(){
+            document.getElementById('waiting').removeAttribute("hidden");
+        }
+
+
     </script>
 {% endblock %}
