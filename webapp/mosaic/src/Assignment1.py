@@ -1,17 +1,12 @@
-import os 
 import pickle
 import joblib
 import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
 from sklearn.neighbors import NearestNeighbors
 import math
-import random
 
 from mosaic.src.base import Base
-import mosaic.src.utils as utils
-import random
 import os
+
 
 class Assignment1(Base):
 

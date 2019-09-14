@@ -1,8 +1,6 @@
-from skimage import io
 import numpy as np
 from mosaic.src.Assignment1 import Assignment1
 import mosaic.src.utils as utils
-import os
 from PIL import Image
 
 
