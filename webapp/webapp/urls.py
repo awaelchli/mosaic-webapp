@@ -20,8 +20,7 @@ from mosaic import views
 from webapp import settings
 
 urlpatterns = [
-    path('', views.home, name='index'),
-    path('home/', views.home, name='home'),
+    path('', views.upload, name='home'),
     path('admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

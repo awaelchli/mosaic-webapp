@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+
+{% block body %}
+
+    <!-- This is the upload form (file selection and upload button) -->
+    <h1>Make your image unique!</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy}}
+        <button type="submit" class="btn btn-primary">Convert</button>
+    </form>
+    <span class="text-muted" id="waiting" hidden>
+        Please wait...
+    </span>
+
+    <a class="btn btn-primary {% if not success %} disabled {% endif %}" href="{{ output_file_url }}" target="_blank">
+        Download
+    </a>
+
+
+    <hr/>
+
+    {% if mosaic %}
+        <h4>Your mosaic:</h4>
+        <img src="{{ mosaic.mosaic_file.url }}" class="img-fluid mt-4" alt="Mosaic image" style="width: 100%;">
+    {% endif  %}
+
+
+{% endblock %}
+
+
+
+{% block script %}
+    <script>
+
+        const realFileBtn = document.getElementById('real-file');
+        const customBtn = document.getElementById('custom-button');
+        const customTxt = document.getElementById('custom-text');
+
+        customBtn.addEventListener("click", function(){
+            realFileBtn.click()
+        });
+
+        realFileBtn.addEventListener("change", function () {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+            } else {
+                customTxt.innerHTML = 'No file chosen.'
+            }
+        });
+
+    </script>
+
+    <script>
+        function unlock(){
+            document.getElementById('upload-button').removeAttribute("disabled");
+        }
+
+        function wait(){
+            document.getElementById('waiting').removeAttribute("hidden");
+        }
+
+
+    </script>
+{% endblock %}

@@ -14,7 +14,7 @@ from PIL import Image
 """
 
 
-def mosaic(input_file, output_file):
+def mosaic(input_file, output_file, height=None):
     # array = io.imread(input_file)
     # io.imsave(output_file, array)
     # return True
@@ -33,8 +33,10 @@ def mosaic(input_file, output_file):
 
 
     # Load image and resize it to a fixed size (keeping aspect ratio)
-    array = Image.open(input_file).convert('RGB')
-    img = utils.resize_proportional(array, new_height=50)
+    img = Image.open(input_file).convert('RGB')
+
+    if height:
+        img = utils.resize_proportional(img, new_height=height)
 
     target_image = np.array(img) / 255
 

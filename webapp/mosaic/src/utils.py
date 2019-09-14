@@ -14,10 +14,8 @@ def output_image_size(n_patches_x, n_patches_y, patch_size):
     
     return n_patches_x * patch_size, n_patches_y * patch_size
 
+
 def slice_image(image, tile_size):
-    
-
-
     height = image.shape[0]
     width = image.shape[1]
     assert height > tile_size and width > tile_size
@@ -60,3 +58,13 @@ def resize_proportional(pil_image, new_height):
     aspect = width / height
     img = pil_image.resize((int(new_height * aspect), int(new_height)), Image.BILINEAR)
     return img
+
+
+def convert_quality(quality):
+    table = dict(
+        small=100,
+        medium=500,
+        large=1000,
+        original=None
+    )
+    return table[quality.lower()]
