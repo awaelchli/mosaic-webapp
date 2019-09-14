@@ -1,6 +1,6 @@
-# Image Mosaic - Schweizer Jugend Forscht
+# Image Mosaic - WebApp
 
-This is the a Mosaicking WebApp created during the study week [*Fascinating Informatics*](https://sjf.ch/) at University of Bern.
+This is the a Mosaicking WebApp created during the study week [*Fascinating Informatics*](https://sjf.ch/) from 9.-13. Sept. 2019 at the University of Bern.
 
 ## Installation
 
