@@ -13,22 +13,28 @@
     <!-- This is the upload form (file selection and upload button) -->
     <h1>Make your image unique!</h1>
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy}}
-        <button type="submit" class="btn btn-primary">Convert</button>
-    </form>
-    <span class="text-muted" id="waiting" hidden>
-        Please wait...
-    </span>
 
-    <a class="btn btn-primary {% if not success %} disabled {% endif %}" href="{{ output_file_url }}" target="_blank">
+    <form method="post" enctype="multipart/form-data" onsubmit="wait()">
+        <div class="box1">
+            {% csrf_token %}
+            {{ form|crispy}}
+        </div>
+        <button type="submit" class="btn btn-primary my-3">Convert</button>
+
+
+        <div class="progress" id="progress_bar" hidden>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+        </div>
+        <span class="text-muted" id="waiting" hidden>
+            Please wait...
+        </span>
+    </form>
+
+
+    <a class="btn btn-primary my-3 {% if not mosaic %} disabled {% endif %}" href="{{ mosaic.mosaic_file.url }}" target="_blank">
         Download
     </a>
-
-
     <hr/>
-
     {% if mosaic %}
         <h4>Your mosaic:</h4>
         <img src="{{ mosaic.mosaic_file.url }}" class="img-fluid mt-4" alt="Mosaic image" style="width: 100%;">
@@ -67,6 +73,7 @@
 
         function wait(){
             document.getElementById('waiting').removeAttribute("hidden");
+            document.getElementById('progress_bar').removeAttribute("hidden");
         }
 
 

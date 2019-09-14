@@ -2,9 +2,9 @@ from django.db import models
 
 
 QUALITY_CHOICES = [
-    ('small', 'Small'),
-    ('medium', 'Medium'),
-    ('large', 'Large'),
+    ('small', 'Small (~2 minutes)'),
+    ('medium', 'Medium (~5 minutes)'),
+    ('large', 'Large (~10 minutes)'),
     ('original', 'Original size')
 ]
 

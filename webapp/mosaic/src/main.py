@@ -6,8 +6,6 @@ import os
 from PIL import Image
 
 
-
-
 """ This is where your main implementation of the Mosaicking algorithm goes.
     You should not train the model here, just use the saved model you trained beforehand. 
     Resize the uploaded image to a reasonable size to balance computation time and relative patch size.
@@ -31,7 +29,6 @@ def mosaic(input_file, output_file, height=None):
     train_features = False
     train_model = False
 
-
     # Load image and resize it to a fixed size (keeping aspect ratio)
     img = Image.open(input_file).convert('RGB')
 
@@ -49,8 +46,6 @@ def mosaic(input_file, output_file, height=None):
     print(target_image.shape)
 
     output_image = main.mosaic(target_image)
-
-
 
     # Saving the image inside in project root folder
     output_image *= 255

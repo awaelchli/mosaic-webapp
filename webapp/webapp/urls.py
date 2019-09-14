@@ -21,6 +21,7 @@ from webapp import settings
 
 urlpatterns = [
     path('', views.upload, name='home'),
+    path('home/', views.home, name='old'),
     path('admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

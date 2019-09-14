@@ -23,9 +23,8 @@ class Assignment1(Base):
         self.model_file = './mosaic/src/models/nearest_neighbor.pkl'
         self.feature_file = './mosaic/src/features/cifar10/avg.pkl'
 
-
     def get_model(self):
-        neighbor = NearestNeighbors(n_neighbors = 1, metric = self.distance)
+        neighbor = NearestNeighbors(n_neighbors=1, metric=self.distance)
         return neighbor
 
     def get_patch(self, tile):
